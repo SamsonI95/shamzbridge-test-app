@@ -1,0 +1,26 @@
+/* html {
+  scroll-behavior: smooth;
+}
+
+.section-container {
+  scroll-snap-type: y mandatory; 
+  overflow-y: scroll; 
+  height: 100vh; 
+}
+
+.section {
+  scroll-snap-align: start; 
+  height: 100vh; 
+} */
+
+.navbar-dropdown {
+  max-height: 0;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.navbar-dropdown.open {
+  max-height: 20rem;
+  opacity: 1;
+}
