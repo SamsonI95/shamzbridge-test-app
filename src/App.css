@@ -15,12 +15,10 @@
 
 .navbar-dropdown {
   max-height: 0;
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease-out;
   overflow: hidden;
 }
 
 .navbar-dropdown.open {
-  max-height: 20rem;
-  opacity: 1;
+  max-height: 200px;
 }

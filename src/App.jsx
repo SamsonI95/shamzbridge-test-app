@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosMoon, IoMdCloseCircleOutline } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
@@ -77,9 +77,20 @@ const App = () => {
   //mobile navbar
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const dropdownRef = useRef(null);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      const dropdownHeight = dropdownRef.current.scrollHeight;
+      dropdownRef.current.style.maxHeight = `${dropdownHeight}px`;
+    } else {
+      dropdownRef.current.style.maxHeight = "0";
+    }
+  }, [isMenuOpen]);
 
   return (
     <div className={darkMode ? "dark" : ""}>
@@ -139,12 +150,12 @@ const App = () => {
               />
             )}
           </div>
-          {isMenuOpen && (
-            <ul
-              className={`navbar-dropdown flex flex-col gap-4 text-right ${
-                isMenuOpen ? "open" : ""
-              }`}
-            >
+          <div
+            ref={dropdownRef}
+            className="navbar-dropdown transition-all duration-300 ease-in-out overflow-hidden"
+            style={{ maxHeight: "0" }}
+          >
+            <ul className="flex flex-col gap-4 text-right">
               <li>
                 <a
                   href="#home"
@@ -191,7 +202,7 @@ const App = () => {
                 </button>
               </li>
             </ul>
-          )}
+          </div>
         </div>
       </nav>
 
@@ -231,7 +242,7 @@ const App = () => {
           <h2 className="absolute top-[5rem] text-center text-[52px] font-bold">
             Our Vision and Mission
           </h2>
-          <div className="flex flex-col lg:flex-row items-center justify-evenly dark:text-black cursor-pointer">
+          <div className="flex flex-col lg:flex-row items-center justify-evenly mt-5rem lg:mt-[3rem]  dark:text-black cursor-pointer">
             <div className="mt-4 border border-transparent rounded-lg lg:w-[45%] bg-gray-400 dark:bg-white p-4 hover:scale-105 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
               <h3 className="text-2xl font-semibold">Our Mission</h3>
               <p>
