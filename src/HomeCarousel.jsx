@@ -3,15 +3,15 @@ import React, { useState, useEffect } from "react";
 const HomeCarousel = () => {
   const images = [
     {
-      url: "public/3.svg",
+      url: "/3.svg",
       text: "Welcome to Our Platform",
     },
     {
-      url: "public/4.svg",
+      url: "/4.svg",
       text: "Discover Our Services",
     },
     {
-      url: "public/1.svg",
+      url: "/1.svg",
       text: "Empowering Your Workforce",
     },
   ];
